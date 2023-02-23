@@ -159,7 +159,6 @@ class BST:
                             curr = curr.left
                         curr.left = new_node
 
-
     def remove(self, value: object) -> bool:
         """
         TODO: Write your implementation
