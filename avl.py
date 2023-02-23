@@ -1,9 +1,9 @@
-# Name:
-# OSU Email:
-# Course: CS261 - Data Structures
-# Assignment:
-# Due Date:
-# Description:
+# Name:Cassandra Kramer
+# OSU Email: kramecas@oregonstate.edu
+# Course: CS261 - Data Structures / Section 405
+# Assignment: 4 BST/AVL Tree Implementation
+# Due Date: 2/27/2023
+# Description: Implement an AVL tree that's a subclass of the BST
 
 
 import random

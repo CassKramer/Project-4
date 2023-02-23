@@ -1,9 +1,9 @@
-# Name:
-# OSU Email:
-# Course: CS261 - Data Structures
-# Assignment:
-# Due Date:
-# Description:
+# Name: Cassandra Kramer
+# OSU Email: kramecas@oregonstate.edu
+# Course: CS261 - Data Structures/ Section 405
+# Assignment: 4 BST/AVL Tree Implementation
+# Due Date: 2/27/2023
+# Description: Implement a BST class
 
 
 import random
@@ -107,9 +107,34 @@ class BST:
 
     def add(self, value: object) -> None:
         """
-        TODO: Write your implementation
+        Adds a new value to the tree, if duplicate value add to right of the subtree of that node
         """
-        pass
+
+        new_node = BSTNode(value)
+        if self._root is None:
+            self._root = new_node
+
+        elif self._root.value <= new_node.value:
+            if self._root.right is None:
+                self._root.right = new_node
+            else:
+                curr = self._root.right
+                if curr.value <= new_node.value:
+                    self._root.right.right = new_node
+                else:
+                    if curr.value > new_node.value:
+                        self._root.right.left = new_node
+
+        elif self._root.value > new_node.value:
+            if self._root.left is None:
+                self._root.left = new_node
+            else:
+                curr = self._root.left
+                if curr.value <= new_node.value:
+                    self._root.left.right = new_node
+                else:
+                    if curr.value > new_node.value:
+                        self._root.left.left = new_node
 
     def remove(self, value: object) -> bool:
         """
