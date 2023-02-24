@@ -109,80 +109,40 @@ class BST:
         """
         Adds a new value to the tree, if duplicate value add to right of the subtree of that node
         """
+
         curr = self._root
         new_node = BSTNode(value)
 
         if self._root is None:
             self._root = new_node
+        else:
+            while curr.left != new_node and curr.right != new_node:
+                if curr.value > new_node.value:
+                    if curr.left is None:
+                        curr.left = new_node
 
-        elif curr.value <= new_node.value:
-            if curr.right is None:
-                curr.right = new_node
-                curr = self._root
-            else:
-                curr = curr.right
+                    else:
+                        curr = curr.left
+
                 if curr.value <= new_node.value:
                     if curr.right is None:
                         curr.right = new_node
-                        curr = self._root
-                    else:
-                        while curr.value <= new_node.value and curr.right is not None:
-                            curr = curr.right
-                        if curr.right is None and curr.value < new_node.value:
-                            curr.right = new_node
-                        elif curr.value > new_node.value and curr.left is not None:
-                            while curr.value > new_node.value and curr.left is not None:
-                                curr = curr.left
-                        elif curr.left is None and curr.value > new_node.value:
-                            curr.left = new_node
-                            curr = self._root
-                        elif curr.right is None and curr.value < new_node.value:
-                            curr.right = new_node
-                            curr = self._root
-                elif curr.value > new_node.value:
-                    if curr.left is None:
-                        curr.left = new_node
-                        curr = self._root
-                    else:
-                        while curr.value <= new_node.value and curr.left is not None:
-                            curr = curr.left
-                        curr.left = new_node
-                        curr = self._root
 
-        elif curr.value > new_node.value:
-            if curr.left is None:
-                curr.left = new_node
-                curr = self._root
-            else:
-                curr = curr.left
-                if curr.value <= new_node.value:
-                    if curr.right is None:
-                        curr.right = new_node
                     else:
-                        while curr.value <= new_node.value and curr.right is not None:
-                            curr = curr.right
-                        if curr.right is None and curr.value < new_node.value:
-                            curr.right = new_node
-                        elif curr.value > new_node.value and curr.left is not None:
-                            while curr.value > new_node.value and curr.left is not None:
-                                curr = curr.left
-                        elif curr.left is None and curr.value > new_node.value:
-                            curr.left = new_node
-                            curr = self._root
-                        elif curr.right is None and curr.value < new_node.value:
-                            curr.right = new_node
-                            curr = self._root
+                        curr = curr.right
 
-                elif curr.value > new_node.value:
-                    if curr.left is None:
-                        curr.left = new_node
-                    else:
-                        while curr.value >= new_node.value and curr.left is not None:
-                            curr = curr.left
-                        curr.left = new_node
-                        curr = self._root
 
-        curr = self._root
+
+
+
+
+
+
+
+
+
+
+
     def remove(self, value: object) -> bool:
         """
         TODO: Write your implementation
