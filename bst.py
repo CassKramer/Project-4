@@ -161,8 +161,18 @@ class BST:
                     else:
                         while curr.value <= new_node.value and curr.right is not None:
                             curr = curr.right
-                        curr.right = new_node
-                        curr = self._root
+                        if curr.right is None and curr.value < new_node.value:
+                            curr.right = new_node
+                        elif curr.value > new_node.value and curr.left is not None:
+                            while curr.value > new_node.value and curr.left is not None:
+                                curr = curr.left
+                        elif curr.left is None and curr.value > new_node.value:
+                            curr.left = new_node
+                            curr = self._root
+                        elif curr.right is None and curr.value < new_node.value:
+                            curr.right = new_node
+                            curr = self._root
+
                 elif curr.value > new_node.value:
                     if curr.left is None:
                         curr.left = new_node
