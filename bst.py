@@ -233,6 +233,8 @@ class BST:
         pos = remove_node.right
         parent_successor = remove_node.right
 
+        if remove_parent == remove_node:
+            remove_parent = None
 
         while successor != pos:
             if pos.left is not None:
