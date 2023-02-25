@@ -195,6 +195,8 @@ class BST:
         Remove a node that has no subtrees
         """
 
+        if remove_parent == remove_node:
+            self._root = None
         if remove_parent.left == remove_node:
             remove_parent.left = None
         else:
