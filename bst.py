@@ -283,15 +283,38 @@ class BST:
         return True
     def inorder_traversal(self) -> Queue:
         """
-        TODO: Write your implementation
+        Performs an inorder transversal, and returns a queue object that contains the values of the visited nodes
         """
-        pass
+      #  new_queue = Queue()
+
+       # pos = self._root.left
+       # parent = self._root
+
+       # while pos.left is not None:
+         #   parent = pos
+#            pos = pos.left
+
+      #  new_queue.enqueue(pos)
+
+       # while pos.value:
+         #   pos = parent
+
+
+
 
     def find_min(self) -> object:
         """
-        TODO: Write your implementation
+        Returns the lowest value in the tree
         """
-        pass
+        pos = self._root
+
+        if self._root is None:
+            return None
+
+        while pos.left is not None:
+            pos = pos.left
+
+        return pos
 
     def find_max(self) -> object:
         """
