@@ -266,10 +266,10 @@ class BST:
 
         pos = self._root
 
-        if pos == value:
+        if pos.value == value:
             return True
 
-        while pos != value:
+        while pos.value != value:
             if pos.value < value:
                 if pos.right is not None:
                     pos = pos.right
