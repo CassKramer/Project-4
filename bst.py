@@ -314,7 +314,7 @@ class BST:
         while pos.left is not None:
             pos = pos.left
 
-        return pos
+        return pos.value
 
     def find_max(self) -> object:
         """
