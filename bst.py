@@ -318,9 +318,17 @@ class BST:
 
     def find_max(self) -> object:
         """
-        TODO: Write your implementation
+        Returns the highest value in the tree
         """
-        pass
+        pos = self._root
+
+        if self._root is None:
+            return None
+
+        while pos.right is not None:
+            pos = pos.right
+
+        return pos.value
 
     def is_empty(self) -> bool:
         """
