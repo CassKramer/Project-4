@@ -341,9 +341,9 @@ class BST:
 
     def make_empty(self) -> None:
         """
-        TODO: Write your implementation
+        Removes all the nodes from the tree
         """
-        pass
+        self._root = None
 
 
 # ------------------- BASIC TESTING -----------------------------------------
