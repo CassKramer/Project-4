@@ -131,23 +131,59 @@ class BST:
                     else:
                         curr = curr.right
 
-
-
-
-
-
-
-
-
-
-
-
-
     def remove(self, value: object) -> bool:
         """
-        TODO: Write your implementation
+        Removes a given value from the tree, if the value is removed returns true, if not returns false
         """
-        pass
+        parent = self._root
+        pos = self._root
+
+        if pos is None:
+            return False
+
+        if pos.value == value:
+            if pos.right is None and pos.left is None:
+                tree._remove_no_subtrees(parent, pos)
+                return True
+
+            elif pos.right is None or pos.left is None:
+                tree._remove_one_subtree(parent, pos)
+                return True
+
+            elif pos.right is not None and pos.left is not None:
+                tree._remove_two_subtrees(parent, pos)
+                return True
+
+        while pos.value != value:
+            if pos.value < value:
+                if pos.right is not None:
+                    parent = pos
+                    pos = pos.right
+                else:
+                    return False
+            elif pos.value > value:
+                if pos.left is not None:
+                    parent = pos
+                    pos = pos.left
+                else:
+                    return False
+
+
+        if pos.right is None and pos.left is None:
+            tree._remove_no_subtrees(parent, pos)
+            return True
+
+        if pos.right is None or pos.left is None:
+            tree._remove_one_subtree(parent, pos)
+            return True
+
+        if pos.right is not None and pos.left is not None:
+            tree._remove_two_subtrees(parent, pos)
+            return True
+
+        return False
+
+
 
     # Consider implementing methods that handle different removal scenarios; #
     # you may find that you're able to use some of them in the AVL.          #
@@ -157,25 +193,65 @@ class BST:
 
     def _remove_no_subtrees(self, remove_parent: BSTNode, remove_node: BSTNode) -> None:
         """
-        TODO: Write your implementation
+        Remove a node that has no subtrees
         """
-        # remove node that has no subtrees (no left or right nodes)
-        pass
+
+        if remove_parent.left == remove_node:
+            remove_parent.left = None
+        else:
+            remove_parent.right = remove_node
+            remove_parent.right = None
 
     def _remove_one_subtree(self, remove_parent: BSTNode, remove_node: BSTNode) -> None:
         """
-        TODO: Write your implementation
+        Remove a node that has only one subtree
         """
-        # remove node that has a left or right subtree (only)
-        pass
+        if remove_parent == remove_node:
+            if remove_node.left is None:
+                self._root = remove_node.right
+            else:
+                self._root = remove_node.left
+
+        if remove_parent.left == remove_node:
+            if remove_node.left is None:
+                remove_parent.left = remove_node.right
+            else:
+                remove_parent.left = remove_node.left
+
+        elif remove_parent.right == remove_node:
+            if remove_node.left is None:
+                remove_parent.right = remove_node.right
+            else:
+                remove_parent.right = remove_node.left
 
     def _remove_two_subtrees(self, remove_parent: BSTNode, remove_node: BSTNode) -> None:
         """
-        TODO: Write your implementation
+        Removes a node that has two subtrees
         """
-        # remove node that has two subtrees
-        # need to find inorder successor and its parent (make a method!)
-        pass
+        successor = remove_node.right
+        pos = remove_node.right
+        parent_successor = remove_node.right
+
+
+        while successor != pos:
+            if pos.left is not None:
+                parent_successor = pos
+                pos = pos.left
+            else:
+                successor = pos
+
+        successor.left = remove_node.left
+
+        if remove_node.right != successor:
+            parent_successor.left = successor.right
+            successor.right = remove_node.right
+
+        if remove_parent.right == remove_node:
+            remove_parent.right = successor
+        else:
+            remove_parent.left = successor
+
+
 
     def contains(self, value: object) -> bool:
         """
