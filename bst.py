@@ -143,15 +143,15 @@ class BST:
 
         if pos.value == value:
             if pos.right is None and pos.left is None:
-                remove_no_subtrees(parent, pos)
+                self._remove_no_subtrees(parent, pos)
                 return True
 
             elif pos.right is None or pos.left is None:
-                tree._remove_one_subtree(parent, pos)
+                self._remove_one_subtree(parent, pos)
                 return True
 
             elif pos.right is not None and pos.left is not None:
-                tree._remove_two_subtrees(parent, pos)
+                self._remove_two_subtrees(parent, pos)
                 return True
 
         while pos.value != value:
@@ -167,7 +167,6 @@ class BST:
                     pos = pos.left
                 else:
                     return False
-
 
         if pos.right is None and pos.left is None:
             self._remove_no_subtrees(parent, pos)
