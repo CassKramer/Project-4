@@ -229,7 +229,7 @@ class BST:
         """
         Removes a node that has two subtrees
         """
-        successor = remove_node.right
+        successor = None
         pos = remove_node.right
         parent_successor = remove_node.right
 
